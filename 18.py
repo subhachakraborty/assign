@@ -3,6 +3,7 @@
 import os
 
 def wordfile(path):
+    """It will return a list of word file present in a given path"""
     l = []
     listoffile = os.listdir(path)
     for i in listoffile:
@@ -11,4 +12,4 @@ def wordfile(path):
     return l
 
 if __name__ == "__main__":
-    print(wordfile("C:\\Users\\subha\\Downloads\\"))
+    print(wordfile(input("Enter the path\n")))
