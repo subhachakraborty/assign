@@ -29,16 +29,17 @@ def mail():
             print(f"From : {mail_msg['From']}\nDate : {mail_msg['Date']}")
             msg_head = str(msg_head)
             print("Subject: {}".format(msg_head))
-            if prompt.lower() == "no":
+            if prompt.lower() == "yes":
                 for element in mail_msg.walk():
-                    if element.get_content_type() == "text/plain" :
+                    if element.get_content_type() == "text/plain" or element.get_content_type() == "text/html" :
                         element = str(element)
                         print(element)
-            elif prompt.lower() == "yes":
+            elif prompt.lower() == "no":
                 for element in mail_msg.walk():
-                    if element.get_content_type() == "text/plain" or element.get_content_type() == "text/html":
-                        element = str(element)
-                        print(element)
+                    if element.get_content_type() == "text/plain":
+                        lines = element.as_string().split("/n")
+                        for i in lines:
+                            print(i)
             else:
                 print("Error")
                 break
